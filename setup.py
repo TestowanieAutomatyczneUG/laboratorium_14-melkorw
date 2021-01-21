@@ -7,6 +7,7 @@ https://github.com/pypa/sampleproject
 
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
+from setuptools_behave import behave_test
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -30,7 +31,10 @@ setup(
     # specification here:
     # https://packaging.python.org/specifications/core-metadata/#name
     name='sampleproject',  # Required
-
+    tests_require=["behave>=1.2.4"],
+    cmdclass = {
+      "behave_test": behave_test,
+    },
     # Versions should comply with PEP 440:
     # https://www.python.org/dev/peps/pep-0440/
     #
@@ -180,7 +184,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'sample=sample:main',
+            'roman=roman:Roman',
         ],
     },
 
